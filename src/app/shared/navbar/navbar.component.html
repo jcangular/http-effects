@@ -12,15 +12,15 @@
                 <a class="nav-link" [routerLink]="['home']">Inicio</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['user']">Usuario</a>
+                <a class="nav-link" [routerLink]="['user', id]">Usuario</a>
             </li>
 
         </ul>
         <div class="form-inline my-2 my-lg-0">
             <input #txtInput class="form-control mr-sm-2" type="search" placeholder="id usuario..." aria-label="Search"
-                (keyup.enter)="gotoUser(txtInput.value)" (focus)="txtInput.select()">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="button"
-                (click)="gotoUser(txtInput.value)">Buscar</button>
+                (keyup.enter)="gotoUser(txtInput.value)" (focus)="txtInput.select()" [value]="id">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="gotoUser(txtInput.value)"
+                [disabled]="!id">Buscar</button>
         </div>
     </div>
 </nav>

@@ -11,9 +11,13 @@ export class NavbarComponent implements OnInit {
 
     // @ViewChild('txtInput') txtInput: ElementRef<HTMLInputElement>;
 
+    id: string;
+
     constructor(
         private router: Router
-    ) { }
+    ) {
+        this.id = '1';
+    }
 
     ngOnInit(): void {
     }
@@ -22,6 +26,7 @@ export class NavbarComponent implements OnInit {
         if (!id) {
             return;
         }
+        this.id = id;
         this.router.navigate(['user', id]);
 
     }

@@ -7,14 +7,14 @@ export interface ErrorRequest {
     name: string;
     message: string;
 }
-export interface UserState {
+export interface UsersState {
     userList: User[];
     loaded: boolean;
     loading: boolean;
     error: ErrorRequest;
 }
 
-export const usersInitialState: UserState = {
+export const usersInitialState: UsersState = {
     userList: [],
     loaded: false,
     loading: false,
@@ -46,6 +46,6 @@ const usersReducerInner = createReducer(usersInitialState,
 
 );
 
-export function usersReducer(state: UserState, action) {
+export function usersReducer(state: UsersState, action) {
     return usersReducerInner(state, action);
 }
