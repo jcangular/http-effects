@@ -1,4 +1,17 @@
-<div class="row row-cols-1 row-cols-md-3">
+<div *ngIf="loading" class="alert alert-success text-center mt-2" role="alert">
+    <h4 class="alert-heading">Cargando...</h4>
+    <p>
+        <i class="fa fa-sync fa-spin fa-2x"></i>
+    </p>
+</div>
+
+
+<div *ngIf="error" class="alert alert-danger text-center mt-2" role="alert">
+    <h4 class="alert-heading">Error al obtener los usuarios</h4>
+    <p> {{error.message}} </p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3" *ngIf="!loading && error === null">
 
     <div class="col mb-4" *ngFor="let user of users">
         <div class="card h-100">

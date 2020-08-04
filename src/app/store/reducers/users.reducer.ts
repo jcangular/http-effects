@@ -1,16 +1,21 @@
-import { createReducer, on } from '@ngrx/store';
+import { createReducer, on, ActionReducer, Action } from '@ngrx/store';
 import { loadUsers, loadUsersSuccess, loadUsersError } from '../actions';
 import { User } from '../../models/user.model';
 
+export interface ErrorRequest {
+    url: string;
+    name: string;
+    message: string;
+}
 export interface UserState {
-    users: User[];
+    userList: User[];
     loaded: boolean;
     loading: boolean;
-    error: any;
+    error: ErrorRequest;
 }
 
 export const usersInitialState: UserState = {
-    users: [],
+    userList: [],
     loaded: false,
     loading: false,
     error: null
@@ -20,18 +25,22 @@ const usersReducerInner = createReducer(usersInitialState,
 
     on(loadUsers, state => ({ ...state, loading: true })),
 
-    on(loadUsersSuccess, (state, { users }) => ({
+    on(loadUsersSuccess, (state, { userList }) => ({
         ...state,
         loading: false,
         loaded: true,
-        users: [...users]
+        userList: [...userList]
     })),
 
     on(loadUsersError, (state, { payload }) => ({
         ...state,
         loading: false,
         loaded: false,
-        error: payload
+        error: {
+            url: payload.url,
+            name: payload.name,
+            message: payload.message
+        }
     })),
 
 
