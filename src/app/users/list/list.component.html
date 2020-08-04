@@ -1,1 +1,16 @@
-<p>list works!</p>
+<div class="row row-cols-1 row-cols-md-3">
+
+    <div class="col mb-4" *ngFor="let user of users">
+        <div class="card h-100">
+            <img [src]="user.avatar" class="card-img-top" [alt]="user.first_name + ' avatar'">
+            <div class="card-body">
+                <h5 class="card-title"> {{user.first_name}} {{user.last_name}}</h5>
+                <p class="card-text"> {{user.email}} </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">ID: {{user.id}}</small>
+            </div>
+        </div>
+    </div>
+
+</div>
